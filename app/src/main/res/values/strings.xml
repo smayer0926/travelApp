@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">TravelApp</string>
+    <string name="app_name">Worldwide Wonders</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+
+
+
+    <!--Sign Up page information -->
+    <string name="SignUpemail">Your Email</string>
+    <string name="SignUppassword">Your Password</string>
+    <string name="SignUpname">Name</string>
+    <string name="SignUp">Finish Registration!</string>
+    <string name="signUpText">Welcome to the Workout Tracker, sign-up below to get started on your workout today!</string>
+
+
+    <string name="createAccount">Create Account</string>
 </resources>
