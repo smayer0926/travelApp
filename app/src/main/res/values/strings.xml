@@ -2,6 +2,9 @@
     <string name="app_name">Worldwide Wonders</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="signUp">Sign Up</string>
+    <string name="login">Log-In</string>
+    <string name="or">OR</string>
 
 
 

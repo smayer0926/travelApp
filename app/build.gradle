@@ -31,6 +31,8 @@ android {
         }
     }
     buildTypes.each {
+        it.buildConfigField 'String', 'TRAVELID', TRAVELID
+        it.buildConfigField 'String', 'APPCODE', APPCODE
 
     }
 }
