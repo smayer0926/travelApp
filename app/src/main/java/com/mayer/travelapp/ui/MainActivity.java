@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mayer.travelapp.R;
 
@@ -30,18 +29,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mLogin.setOnClickListener(this);
     }
 
+
+
     @Override
     public void onClick(View v){
         if(v == mSignUp){
-            Intent signupIntent = new Intent(MainActivity.this, SignUpActivity.class);
+            Intent signupIntent = new Intent(MainActivity.this, InputActivity.class);
             startActivity(signupIntent);
-        } else if(v == mLogin){
-            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(loginIntent);
-        }else {
-            Toast.makeText(this, "There was an error, please try again", Toast.LENGTH_SHORT).show();
-            Intent errorIntent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(errorIntent);
         }
     }
+//        if(v == mSignUp){
+//            Intent signupIntent = new Intent(MainActivity.this, InputActivity.class);
+//            startActivity(signupIntent);
+//        } else if(v == mLogin){
+//            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+//            startActivity(loginIntent);
+//        }else {
+//            Toast.makeText(this, "There was an error, please try again", Toast.LENGTH_SHORT).show();
+//            Intent errorIntent = new Intent(MainActivity.this, MainActivity.class);
+//            startActivity(errorIntent);
+//        }
+//    }
 }
