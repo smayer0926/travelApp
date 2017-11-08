@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.mayer.travelapp.Constants;
 import com.mayer.travelapp.R;
+import com.mayer.travelapp.adapter.PlacesPagerAdapter;
 import com.mayer.travelapp.model.Travel;
 
 import org.parceler.Parcels;
@@ -21,8 +22,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class PlacesDetailActivity extends AppCompatActivity {
-//    @Bind(R.id.viewPager) ViewPager mViewPager;
-//    private TravelPagerAdapter adapterViewPager;
+    @Bind(R.id.viewPager) ViewPager mViewPager;
+    private PlacesPagerAdapter adapterViewPager;
     ArrayList<Travel> mTravels = new ArrayList<>();
 
     @Override
@@ -33,7 +34,13 @@ public class PlacesDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mTravels = Parcels.unwrap(getIntent().getParcelableExtra(Constants.EXTRA_KEY_TRAVEL));
-        int startingPosition = getIntent().getIntExtra(Constants.EXTRA_KEY_POSITION, 0);
+        int startingPosition = getIntent().getIntExtra("position", 0);
+
+
+
+        adapterViewPager = new PlacesPagerAdapter(getSupportFragmentManager(), mTravels);
+        mViewPager.setAdapter(adapterViewPager);
+        mViewPager.setCurrentItem(startingPosition);
 
     }
 }

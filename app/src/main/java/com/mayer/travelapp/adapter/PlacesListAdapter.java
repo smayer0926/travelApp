@@ -50,8 +50,7 @@ public class PlacesListAdapter extends RecyclerView.Adapter<PlacesListAdapter.Pl
 
     public class PlacesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.placesTitle) TextView mPlacesTitle;
-//        @Bind(R.id.category) TextView mCategory;
-//        @Bind(R.id.vicinity) TextView mVicinity;
+
 
         private Context mContext;
 
@@ -63,17 +62,18 @@ public class PlacesListAdapter extends RecyclerView.Adapter<PlacesListAdapter.Pl
         }
         public void bindPlaces(Travel travel) {
             mPlacesTitle.setText(travel.getName());
-//            mCategory.setText(travel.getmCategory());
-//            mVicinity.setText(travel.getVicinity());
+
         }
         public void onClick(View v){
-            Log.d("click listener", "working");
+
             int itemPosition = getLayoutPosition();
             Intent intent = new Intent(mContext, PlacesDetailActivity.class);
-            intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition +"");
-            intent.putExtra(Constants.EXTRA_KEY_POSITION, Parcels.wrap(mTravels));
+            intent.putExtra(Constants.EXTRA_KEY_POSITION, itemPosition);
+            intent.putExtra(Constants.EXTRA_KEY_TRAVEL, Parcels.wrap(mTravels));
+
             mContext.startActivity(intent);
 
         }
     }
+
 }

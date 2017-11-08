@@ -50,6 +50,7 @@ public class PlacesDetailFragment extends Fragment {
         mTravels = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_TRAVEL));
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mTravel = mTravels.get(mPosition);
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -57,13 +58,13 @@ public class PlacesDetailFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mTitle.setText(mTravel.getName());
-        mVicinity.setText(mTravel.getVicinity());
-
-        String description = mTravel.getmCategory();
+        mCategory.setText(mTravel.getmCategory());
+        String description = (mTravel.getVicinity());
 
 
         String revisedDescription = html2text(description);
-        mCategory.setText(revisedDescription);
+
+        mVicinity.setText(revisedDescription);
 
         return view;
     }
