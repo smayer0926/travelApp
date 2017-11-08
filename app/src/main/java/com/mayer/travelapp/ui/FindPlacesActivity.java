@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 
 
 import com.mayer.travelapp.R;
@@ -73,15 +74,15 @@ public class FindPlacesActivity extends AppCompatActivity {
                                 new LinearLayoutManager(FindPlacesActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
-
-
                     }
                 });
             }
         });
     }
-    public static String html2text(String html){
-        return Jsoup.parse(html).text();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
+
 }
 
