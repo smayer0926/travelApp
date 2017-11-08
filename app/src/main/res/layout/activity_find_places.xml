@@ -7,11 +7,11 @@
     tools:context="com.mayer.travelapp.ui.FindPlacesActivity">
 
 
-    <ListView
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
+
 
 </android.support.constraint.ConstraintLayout>

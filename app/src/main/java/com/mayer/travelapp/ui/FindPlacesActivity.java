@@ -2,22 +2,18 @@ package com.mayer.travelapp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 
 import com.mayer.travelapp.R;
+import com.mayer.travelapp.adapter.PlacesListAdapter;
 import com.mayer.travelapp.model.Travel;
 import com.mayer.travelapp.service.TravelService;
+
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -30,9 +26,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class FindPlacesActivity extends AppCompatActivity {
-    @Bind(R.id.listView) ListView mListView;
-    public static final String TAG = FindPlacesActivity.class.getSimpleName();
-
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private PlacesListAdapter mAdapter;
     public ArrayList<Travel> mTravels = new ArrayList<>();
 
 
@@ -52,7 +47,7 @@ public class FindPlacesActivity extends AppCompatActivity {
 
 
             String location = longitude + "," + latitude;
-        System.out.println(location);
+
             getPlaces(location, places);
 
     }
@@ -72,28 +67,21 @@ public class FindPlacesActivity extends AppCompatActivity {
                 FindPlacesActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        String [] placesToGo = new String[mTravels.size()];
-                        for(int i = 0; i < placesToGo.length; i++){
-                            placesToGo[i] = mTravels.get(i).getName();
-                        }
-                        ArrayAdapter adapter = new ArrayAdapter(FindPlacesActivity.this, android.R.layout.simple_list_item_1, placesToGo);
-                        mListView.setAdapter(adapter);
+                        mAdapter = new PlacesListAdapter(getApplicationContext(), mTravels);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager =
+                                new LinearLayoutManager(FindPlacesActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
 
-                        for(Travel travel : mTravels) {
-                            Log.d(TAG, "Name:" + travel.getName());
-                            Log.d(TAG, "Vicinity:" + travel.getVicinity());
-                        }
+
                     }
                 });
-
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
             }
         });
+    }
+    public static String html2text(String html){
+        return Jsoup.parse(html).text();
     }
 }
 
