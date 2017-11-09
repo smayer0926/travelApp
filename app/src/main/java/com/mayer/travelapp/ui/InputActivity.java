@@ -31,8 +31,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     EditText mLatitude;
     @Bind(R.id.place)
     EditText mPlace;
-    @Bind(R.id.savedPlacesButton)
-    Button mSavedPlacesButton;
+
     @Bind(R.id.navigation) BottomNavigationView navigation;
 
 
@@ -43,7 +42,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
 
         ButterKnife.bind(this);
         mFindPlacesButton.setOnClickListener(this);
-        mSavedPlacesButton.setOnClickListener(this);
+
 
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -65,9 +64,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
             intent.putExtra("longitude", longitude);
             intent.putExtra("place", place);
             startActivity(intent);
-        } else if (v == mSavedPlacesButton) {
-            Intent newIntent = new Intent(InputActivity.this, SavedPlacesActivity.class);
-            startActivity(newIntent);
+
         }
     }
 

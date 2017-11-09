@@ -3,6 +3,8 @@ package com.mayer.travelapp.ui;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +32,8 @@ public class FindPlacesActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private PlacesListAdapter mAdapter;
     public ArrayList<Travel> mTravels = new ArrayList<>();
+    @Bind(R.id.navigation)
+    BottomNavigationView navigation;
 
 
     @Override
@@ -38,7 +42,7 @@ public class FindPlacesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_places);
 
         ButterKnife.bind(this);
-
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
         Intent intent = getIntent();
@@ -83,6 +87,32 @@ public class FindPlacesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.menu_home:
+                    Intent homeIntent = new Intent(FindPlacesActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    break;
+
+                case R.id.menu_save:
+                    Intent saveIntent = new Intent(FindPlacesActivity.this, SavedPlacesActivity.class);
+                    startActivity(saveIntent);
+                    break;
+
+                case R.id.menu_search:
+                    Intent searchIntent = new Intent(FindPlacesActivity.this, InputActivity.class);
+                    startActivity(searchIntent);
+                    break;
+
+            }
+            return false;
+        }
+
+    };
 }
 
