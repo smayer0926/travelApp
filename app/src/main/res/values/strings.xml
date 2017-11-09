@@ -6,6 +6,8 @@
     <string name="login">Log-In</string>
     <string name="or">OR</string>
 
+    <string name="findLocation">Enter a Destination</string>
+    <string name="logout">Logout</string>
 
     <!--Sign Up page information -->
     <string name="SignUpemail">Your Email</string>
