@@ -41,6 +41,7 @@ public class PlacesDetailActivity extends AppCompatActivity {
         adapterViewPager = new PlacesPagerAdapter(getSupportFragmentManager(), mTravels);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
-
     }
+
+
 }
