@@ -28,6 +28,11 @@
     <string name="title_activity_find_places">Popular Destinations</string>
     <string name="title_activity_places_detail">Destination Details</string>
 
+
+    <string name="destinationCategory">Category of Destination:</string>
+    <string name="address">Address:</string>
+    <string name="title_activity_saved_places">SavedPlacesActivity</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

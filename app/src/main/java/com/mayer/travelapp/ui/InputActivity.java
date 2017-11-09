@@ -21,6 +21,7 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
     @Bind(R.id.longitude) EditText mLongitude;
     @Bind(R.id.latitude) EditText mLatitude;
     @Bind(R.id.place) EditText mPlace;
+    @Bind(R.id.savedPlacesButton) Button mSavedPlacesButton;
 
 
 
@@ -31,6 +32,8 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
 
         ButterKnife.bind(this);
         mFindPlacesButton.setOnClickListener(this);
+        mSavedPlacesButton.setOnClickListener(this);
+
     }
 
 
@@ -47,7 +50,9 @@ public class InputActivity extends AppCompatActivity implements View.OnClickList
             intent.putExtra("longitude", longitude);
             intent.putExtra("place", place);
             startActivity(intent);
-
+        } else if(v == mSavedPlacesButton){
+            Intent newIntent = new Intent(InputActivity.this, SavedPlacesActivity.class);
+            startActivity(newIntent);
         }
     }
     @Override

@@ -36,8 +36,7 @@
         </activity>
         <activity
             android:name=".ui.InputActivity"
-            android:label="@string/title_activity_input"
-           >
+            android:label="@string/title_activity_input">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mayer.travelapp.ui.MainActivity" />
@@ -48,17 +47,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mayer.travelapp.ui.InputActivity" />
-
         </activity>
-
         <activity
             android:name=".ui.PlacesDetailActivity"
             android:label="@string/title_activity_places_detail">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mayer.travelapp.ui.FindPlacesActivity" />
+        </activity>
+        <activity
+            android:name=".ui.SavedPlacesActivity"
+            android:label="@string/title_activity_saved_places"
 
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mayer.travelapp.ui.MainActivity" />
         </activity>
     </application>
 

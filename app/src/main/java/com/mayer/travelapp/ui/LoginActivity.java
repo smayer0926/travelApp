@@ -70,9 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onStart(){
         super.onStart();
-        if(mAuthListener != null){
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
+        mAuth.addAuthStateListener(mAuthListener);
     }
     @Override
     public void onStop(){

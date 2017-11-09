@@ -7,10 +7,14 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mayer.travelapp.Constants;
 import com.mayer.travelapp.R;
 import com.mayer.travelapp.model.Travel;
@@ -24,10 +28,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class PlacesDetailFragment extends Fragment {
+public class PlacesDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.vicinity) TextView mVicinity;
     @Bind(R.id.category) TextView mCategory;
     @Bind(R.id.placesTitle) TextView mTitle;
+    @Bind(R.id.saveButton)
+    Button mSaveButton;
 
     private Travel mTravel;
     private int mPosition;
@@ -51,6 +57,8 @@ public class PlacesDetailFragment extends Fragment {
         mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
         mTravel = mTravels.get(mPosition);
 
+
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -58,7 +66,7 @@ public class PlacesDetailFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mTitle.setText(mTravel.getName());
-        mCategory.setText(mTravel.getmCategory());
+        mCategory.setText( mTravel.getmCategory());
         String description = (mTravel.getVicinity());
 
 
@@ -66,14 +74,25 @@ public class PlacesDetailFragment extends Fragment {
 
         mVicinity.setText(revisedDescription);
 
+        mSaveButton.setOnClickListener(this);
+
         return view;
     }
-//    @Override
-//    public void onClick(View v){
-//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//
-//    }
-//
+    @Override
+    public void onClick(View v){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference travelRef = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_TRAVEL_SAVED)
+                .child(uid);
+        DatabaseReference pushRef = travelRef.push();
+        String pushId = pushRef.getKey();
+        mTravel.setPushId(pushId);
+        pushRef.setValue(mTravel);
+        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+    }
+
 
     public static String html2text(String html){
         return Jsoup.parse(html).text();
