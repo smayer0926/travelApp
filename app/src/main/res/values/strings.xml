@@ -16,15 +16,15 @@
 
     <string name="submit">Submit!</string>
     <string name="createAccount">Create Account</string>
-    <string name="title_activity_find_place">FindPlaceActivity</string>
+    <string name="title_activity_input">Find a Destination!</string>
 
 
     <string name="attractions">Attractions</string>
     <string name="restaurants">Restaurants</string>
     <string name="Museum">Museums</string>
     <string name="shop">Shopping</string>
-    <string name="title_activity_find_places">FindPlacesActivity</string>
-    <string name="title_activity_places_detail">PlacesDetailActivity</string>
+    <string name="title_activity_find_places">Popular Destinations</string>
+    <string name="title_activity_places_detail">Destination Details</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

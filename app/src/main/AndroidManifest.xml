@@ -36,20 +36,30 @@
         </activity>
         <activity
             android:name=".ui.InputActivity"
-            android:label="@string/title_activity_find_place"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_input"
+           >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mayer.travelapp.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.FindPlacesActivity"
-            android:label="@string/title_activity_find_places"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_find_places">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mayer.travelapp.ui.InputActivity" />
+
+        </activity>
+
         <activity
             android:name=".ui.PlacesDetailActivity"
-            android:label="@string/title_activity_places_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="@string/title_activity_places_detail">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mayer.travelapp.ui.FindPlacesActivity" />
+
+        </activity>
     </application>
 
 </manifest>
