@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/vicinity"
         android:text="Vicinity"
+        android:textColor="@color/colorLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -22,6 +23,7 @@
     <TextView
         android:id="@+id/category"
         android:text="Category spot"
+        android:textColor="@color/colorLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -36,6 +38,7 @@
 
     <TextView
         android:id="@+id/placesTitle"
+        android:textColor="@color/colorLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
