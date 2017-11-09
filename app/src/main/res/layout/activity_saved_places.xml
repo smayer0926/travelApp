@@ -12,4 +12,7 @@
         android:layout_height="wrap_content"
         tools:layout="@layout/fragment_places_list" />
 
+
+
+
 </android.support.constraint.ConstraintLayout>
