@@ -21,17 +21,19 @@ _This application will allow a user to search for a destination for travel and l
 
 ## View Of Application
 
-![Image of Main page](images/)
+![Image of Main page](images/LoginScreen.png)
 
-![Looking up results](images/)
+![Create an Account](images/createAccount.png)
 
-![Looking up results](images/)
+![Login Screen](images/LoginScreen1'.png)
 
-![Looking up results](images/)
+![Searching for Destination](images/Destinations.png)
 
-![Looking up results](images/)
+![Favorites](images/favorites.png)
 
-![Looking up results](images/)
+![Looking up results](images/Details.png)
+
+![Looking up results](images/SearchScreen.png)
 
 
 ## Setup Requirements
