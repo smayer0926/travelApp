@@ -1,6 +1,8 @@
 package com.mayer.travelapp.service;
 
 
+import android.util.Log;
+
 import com.mayer.travelapp.Constants;
 import com.mayer.travelapp.model.Travel;
 
@@ -24,15 +26,20 @@ public class TravelService {
                 .build();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.TRAVEL_BASE_URL).newBuilder();
-        String url = urlBuilder.build().toString();
         urlBuilder.addQueryParameter(Constants.TRAVEL_QUERY, location);
         urlBuilder.addQueryParameter(Constants.TRAVEL_INTERESTS, interests);
         urlBuilder.addQueryParameter(Constants.API_ID, Constants.TRAVEL_APPID);
         urlBuilder.addQueryParameter(Constants.API_CODE, Constants.TRAVEL_APPCODE);
 
+
+
+        String url = urlBuilder.build().toString();
+
         Request request = new Request.Builder()
                 .url(url)
                 .build();
+        System.out.println(request);
+        System.out.println(url);
 
         Call call = client.newCall(request);
         call.enqueue(callback   );
@@ -41,22 +48,25 @@ public class TravelService {
      ArrayList<Travel> travelIdeas = new ArrayList<>();
         try{
             String jsonData = response.body().string();
-            if(response.isSuccessful()){
+            if(response.isSuccessful()) {
                 JSONObject travelJSON = new JSONObject(jsonData);
-                JSONArray travelInformationJSON = travelJSON.getJSONArray("results");
-                JSONArray nextLevelInformationJSON = travelJSON.getJSONArray("items");
-                System.out.println(nextLevelInformationJSON);
+                JSONObject travelInformationJSON = travelJSON.getJSONObject("results");
+                JSONArray nextLevelInformationJSON = travelInformationJSON.getJSONArray("items");
                 for(int i = 0; i< nextLevelInformationJSON.length(); i++){
-                    JSONObject travelStuffJSON = travelInformationJSON.getJSONObject(i);
-                    String title = travelStuffJSON.getString("title");
+                    JSONObject travelStuffJSON = nextLevelInformationJSON.getJSONObject(i);
+
+                    String name = travelStuffJSON.getString("title");
+
                     String vicinity = travelStuffJSON.getString("vicinity");
-                    JSONArray categoryJSON = travelStuffJSON.getJSONArray("category");
-                    ArrayList<String> categories = new ArrayList<>();
-                        for(int j = 0; j < categoryJSON.length(); j++){
-                            categories.add(categoryJSON.getJSONObject(j).getString("title"));
-                        }
+
+                    JSONObject categoriesJSON = travelStuffJSON.getJSONObject("category");
+                    String category = categoriesJSON.getString("title");
+
+                    Travel travel = new Travel(name, vicinity, category);
+                    travelIdeas.add(travel);
                 }
             }
+
 
         }
         catch(IOException e){
@@ -65,6 +75,7 @@ public class TravelService {
         catch (JSONException e){
             e.printStackTrace();
         }
+        System.out.println(travelIdeas);
         return travelIdeas;
     }
 }

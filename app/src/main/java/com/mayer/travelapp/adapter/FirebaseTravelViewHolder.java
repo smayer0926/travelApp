@@ -1,6 +1,6 @@
-package com.mayer.travelapp.adapter;
-
-
-
-public class FirebaseTravelViewHolder {
-}
+//package com.mayer.travelapp.adapter;
+//
+//
+//
+//public class FirebaseTravelViewHolder {
+//}
